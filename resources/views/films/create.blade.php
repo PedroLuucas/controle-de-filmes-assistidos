@@ -44,45 +44,48 @@
                             @enderror
                         </div>
 
-                        <!-- Ano -->
-                        <div class="mb-4">
-                            <label for="ano" class="block text-sm font-medium text-gray-700 mb-2">
-                                Ano de Lançamento *
-                            </label>
-                            <input type="number" 
-                                   id="ano" 
-                                   name="ano" 
-                                   value="{{ old('ano') }}"
-                                   min="1900" 
-                                   max="{{ date('Y') + 5 }}"
-                                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('ano') border-red-500 @enderror"
-                                   required>
-                            @error('ano')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Avaliação -->
-                        <div class="mb-4">
-                            <label for="avaliacao" class="block text-sm font-medium text-gray-700 mb-2">
-                                Avaliação (0 a 10)
-                            </label>
-                            <div class="flex items-center space-x-2">
+                        <!-- Ano e Avaliação na mesma linha -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <!-- Ano -->
+                            <div>
+                                <label for="ano" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Ano de Lançamento *
+                                </label>
                                 <input type="number" 
-                                       id="avaliacao" 
-                                       name="avaliacao" 
-                                       value="{{ old('avaliacao') }}"
-                                       min="0" 
-                                       max="10" 
-                                       step="0.1"
-                                       class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('avaliacao') border-red-500 @enderror"
-                                       placeholder="Ex: 8.5">
-                                <span class="text-gray-500 text-sm">⭐</span>
+                                       id="ano" 
+                                       name="ano" 
+                                       value="{{ old('ano') }}"
+                                       min="1900" 
+                                       max="{{ date('Y') + 5 }}"
+                                       class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('ano') border-red-500 @enderror"
+                                       required>
+                                @error('ano')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
-                            <p class="text-gray-500 text-xs mt-1">Deixe em branco se ainda não assistiu</p>
-                            @error('avaliacao')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
+
+                            <!-- Avaliação -->
+                            <div>
+                                <label for="avaliacao" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Avaliação (0 a 10)
+                                </label>
+                                <div class="flex items-center space-x-2">
+                                    <input type="number" 
+                                           id="avaliacao" 
+                                           name="avaliacao" 
+                                           value="{{ old('avaliacao') }}"
+                                           min="0" 
+                                           max="10" 
+                                           step="0.1"
+                                           class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('avaliacao') border-red-500 @enderror"
+                                           placeholder="Ex: 8.5">
+                                    <span class="text-gray-500 text-sm">⭐</span>
+                                </div>
+                                <p class="text-gray-500 text-xs mt-1">Deixe em branco se ainda não assistiu</p>
+                                @error('avaliacao')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
 
                         <!-- Status Assistido -->
@@ -116,13 +119,13 @@
                         </div>
 
                         <!-- Botões -->
-                        <div class="flex items-center justify-between">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                             <a href="{{ route('films.index') }}" 
-                               class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-200">
+                               class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-200 text-center">
                                 ← Cancelar
                             </a>
                             <button type="submit" 
-                                    class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                                    class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200 order-first sm:order-last">
                                 💾 Salvar Filme
                             </button>
                         </div>

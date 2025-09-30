@@ -18,15 +18,15 @@
             </div>
 
             <!-- Estatísticas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-6">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6">
+                    <div class="p-4 lg:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
                                 <div class="text-2xl">🎬</div>
                             </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-500">Total de Filmes</div>
+                            <div class="ml-4 min-w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-500 truncate">Total de Filmes</div>
                                 <div class="text-2xl font-bold text-gray-900">{{ auth()->user()->films()->count() }}</div>
                             </div>
                         </div>
@@ -34,27 +34,27 @@
                 </div>
 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6">
+                    <div class="p-4 lg:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
                                 <div class="text-2xl">✅</div>
                             </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-500">Assistidos</div>
+                            <div class="ml-4 min-w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-500 truncate">Assistidos</div>
                                 <div class="text-2xl font-bold text-gray-900">{{ auth()->user()->filmesAssistidos()->count() }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg sm:col-span-2 lg:col-span-1">
+                    <div class="p-4 lg:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
                                 <div class="text-2xl">⭐</div>
                             </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-500">Avaliação Média</div>
+                            <div class="ml-4 min-w-0 flex-1">
+                                <div class="text-sm font-medium text-gray-500 truncate">Avaliação Média</div>
                                 <div class="text-2xl font-bold text-gray-900">
                                     @php
                                         $avg = auth()->user()->films()->whereNotNull('avaliacao')->avg('avaliacao');
@@ -93,24 +93,33 @@
                     @if($filmesRecentes->count() > 0)
                         <div class="space-y-3">
                             @foreach($filmesRecentes as $filme)
-                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-                                    <div>
-                                        <h4 class="font-medium text-gray-900">{{ $filme->titulo }}</h4>
-                                        <p class="text-sm text-gray-600">{{ $filme->diretor }} • {{ $filme->ano }}</p>
-                                        @if($filme->assistido)
-                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800 mt-1">
-                                                ✅ Assistido
-                                            </span>
-                                        @else
-                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800 mt-1">
-                                                ⏳ Não assistido
-                                            </span>
-                                        @endif
+                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 border border-gray-200 rounded-lg gap-3">
+                                    <div class="min-w-0 flex-1">
+                                        <h4 class="font-medium text-gray-900 truncate">{{ $filme->titulo }}</h4>
+                                        <p class="text-sm text-gray-600 truncate">{{ $filme->diretor }} • {{ $filme->ano }}</p>
+                                        <div class="mt-1">
+                                            @if($filme->assistido)
+                                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                                                    ✅ Assistido
+                                                </span>
+                                            @else
+                                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800">
+                                                    ⏳ Não assistido
+                                                </span>
+                                            @endif
+                                            @if($filme->avaliacao)
+                                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800 ml-1">
+                                                    ⭐ {{ $filme->avaliacao }}
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <a href="{{ route('films.show', $filme) }}" 
-                                       class="text-blue-600 hover:text-blue-800 text-sm">
-                                        Ver detalhes →
-                                    </a>
+                                    <div class="flex-shrink-0">
+                                        <a href="{{ route('films.show', $filme) }}" 
+                                           class="text-blue-600 hover:text-blue-800 text-sm whitespace-nowrap">
+                                            Ver detalhes →
+                                        </a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
