@@ -106,7 +106,6 @@
                         @enderror
                     </div>
 
-                    <!-- Botões -->
                     <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
                         <div class="flex flex-wrap gap-3">
                             <a href="{{ route('films.index') }}"

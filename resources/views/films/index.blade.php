@@ -3,14 +3,12 @@
     <div class="py-10 mt-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
 
-            <!-- Mensagem de sucesso -->
             @if (session('success'))
             <div class="bg-green-50 border-l-4 border-green-500 text-green-800 p-4 rounded shadow-sm">
                 ✅ {{ session('success') }}
             </div>
             @endif
 
-            <!-- Pesquisa e Filtros -->
             <div class="bg-white shadow-md rounded-xl p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">🔍 Pesquisar e Filtrar</h3>
                 <form method="GET" action="{{ route('films.index') }}" class="space-y-4">

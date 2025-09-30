@@ -6,12 +6,9 @@
     </x-slot>
 
     <div class="py-10 mt-6">
-        <!-- Container principal alinhado ao header -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-            <!-- Informações e Dicas lado a lado -->
             <div class="flex flex-col-6 sm:flex-row gap-4 mt-6">
-                <!-- Informações adicionais -->
                 <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex-1">
                     <h3 class="text-sm font-medium text-yellow-800 mb-2">ℹ️ Informações:</h3>
                     <div class="text-sm text-yellow-700 space-y-1">
@@ -22,7 +19,6 @@
                     </div>
                 </div>
 
-                <!-- Dicas -->
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex-1">
                     <h3 class="text-sm font-medium text-blue-800 mb-2">💡 Dicas:</h3>
                     <ul class="text-sm text-blue-700 space-y-1">

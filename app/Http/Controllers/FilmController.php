@@ -15,12 +15,10 @@ class FilmController extends Controller
     {
         $query = Auth::user()->films();
 
-        // Filtro por título
         if ($request->filled('titulo')) {
             $query->where('titulo', 'like', '%' . $request->titulo . '%');
         }
 
-        // Filtro por status (assistido/não assistido)
         if ($request->filled('status')) {
             if ($request->status === 'assistido') {
                 $query->assistidos();
@@ -29,7 +27,6 @@ class FilmController extends Controller
             }
         }
 
-        // Ordenação
         $orderBy = $request->get('order_by', 'created_at');
         $orderDirection = $request->get('order_direction', 'desc');
         
@@ -74,7 +71,6 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        // Verificar se o filme pertence ao usuário
         if ($film->user_id !== Auth::id()) {
             abort(403);
         }
@@ -100,7 +96,6 @@ class FilmController extends Controller
      */
     public function update(Request $request, Film $film)
     {
-        // Verificar se o filme pertence ao usuário
         if ($film->user_id !== Auth::id()) {
             abort(403);
         }
@@ -143,7 +138,6 @@ class FilmController extends Controller
      */
     public function toggleWatched(Film $film)
     {
-        // Verificar se o filme pertence ao usuário
         if ($film->user_id !== Auth::id()) {
             abort(403);
         }
