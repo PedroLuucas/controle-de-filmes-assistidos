@@ -27,7 +27,7 @@
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-500">Total de Filmes</div>
-                                <div class="text-2xl font-bold text-gray-900">0</div>
+                                <div class="text-2xl font-bold text-gray-900">{{ auth()->user()->films()->count() }}</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-500">Assistidos</div>
-                                <div class="text-2xl font-bold text-gray-900">0</div>
+                                <div class="text-2xl font-bold text-gray-900">{{ auth()->user()->filmesAssistidos()->count() }}</div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,12 @@
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-500">Avaliação Média</div>
-                                <div class="text-2xl font-bold text-gray-900">-</div>
+                                <div class="text-2xl font-bold text-gray-900">
+                                    @php
+                                        $avg = auth()->user()->films()->whereNotNull('avaliacao')->avg('avaliacao');
+                                        echo $avg ? number_format($avg, 1) : '-';
+                                    @endphp
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,12 +72,12 @@
                 <div class="p-6">
                     <h3 class="text-lg font-medium mb-4">Ações Rápidas</h3>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        <a href="{{ route('films.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
                             ➕ Adicionar Filme
-                        </button>
-                        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-50 transition duration-200">
+                        </a>
+                        <a href="{{ route('films.index') }}" class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-50 transition duration-200">
                             📋 Ver Todos os Filmes
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -81,11 +86,47 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <h3 class="text-lg font-medium mb-4">Filmes Recentes</h3>
-                    <div class="text-center py-8 text-gray-500">
-                        <div class="text-6xl mb-4">🎬</div>
-                        <p>Nenhum filme cadastrado ainda.</p>
-                        <p class="text-sm mt-2">Comece adicionando seu primeiro filme!</p>
-                    </div>
+                    @php
+                        $filmesRecentes = auth()->user()->films()->latest()->take(5)->get();
+                    @endphp
+                    
+                    @if($filmesRecentes->count() > 0)
+                        <div class="space-y-3">
+                            @foreach($filmesRecentes as $filme)
+                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">{{ $filme->titulo }}</h4>
+                                        <p class="text-sm text-gray-600">{{ $filme->diretor }} • {{ $filme->ano }}</p>
+                                        @if($filme->assistido)
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800 mt-1">
+                                                ✅ Assistido
+                                            </span>
+                                        @else
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800 mt-1">
+                                                ⏳ Não assistido
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <a href="{{ route('films.show', $filme) }}" 
+                                       class="text-blue-600 hover:text-blue-800 text-sm">
+                                        Ver detalhes →
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="{{ route('films.index') }}" 
+                               class="text-blue-600 hover:text-blue-800 text-sm">
+                                Ver todos os filmes →
+                            </a>
+                        </div>
+                    @else
+                        <div class="text-center py-8 text-gray-500">
+                            <div class="text-6xl mb-4">🎬</div>
+                            <p>Nenhum filme cadastrado ainda.</p>
+                            <p class="text-sm mt-2">Comece adicionando seu primeiro filme!</p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
