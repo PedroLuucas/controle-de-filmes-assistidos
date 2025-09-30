@@ -83,7 +83,6 @@ class FilmController extends Controller
      */
     public function edit(Film $film)
     {
-        // Verificar se o filme pertence ao usuário
         if ($film->user_id !== Auth::id()) {
             abort(403);
         }
