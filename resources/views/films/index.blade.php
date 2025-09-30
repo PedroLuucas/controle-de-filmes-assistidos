@@ -64,7 +64,7 @@
 
                     <!-- Botão Adicionar dentro do card -->
                     <a href="{{ route('films.create') }}"
-                        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition shadow-sm inline-flex items-center gap-2 text-sm">
+                        class="bg-green-600 text-gray-800 px-4 py-2 rounded-lg hover:bg-green-700 transition shadow-sm inline-flex items-center gap-2 text-sm">
                         ➕ Adicionar Filme
                     </a>
                 </div>
@@ -72,7 +72,7 @@
                 @if($films->count() > 0)
                 <div class="space-y-4">
                     @foreach($films as $film)
-                    <div class="border border-gray-200 rounded-lg p-5 hover:shadow-md transition flex flex-col lg:flex-row justify-between gap-4">
+                    <div class="border border-gray-200 rounded-lg p-5 hover:shadow-md transition flex flex-col lg:flex-row justify-between gap-4 mb-4 p-4">
                         <!-- Info -->
                         <div class="flex-1">
                             <div class="flex items-start justify-between mb-2">
