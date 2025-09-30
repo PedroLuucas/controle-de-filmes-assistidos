@@ -8,12 +8,10 @@
     <div class="py-10 mt-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-            <!-- Card do formulário -->
             <div class="bg-white rounded-xl shadow-md p-6">
                 <form method="POST" action="{{ route('films.store') }}">
                     @csrf
 
-                    <!-- Título -->
                     <div class="mb-4">
                         <label for="titulo" class="block text-sm font-medium text-gray-700 mb-2">
                             Título do Filme *
@@ -29,7 +27,6 @@
                         @enderror
                     </div>
 
-                    <!-- Diretor -->
                     <div class="mb-4">
                         <label for="diretor" class="block text-sm font-medium text-gray-700 mb-2">
                             Diretor *
@@ -45,7 +42,6 @@
                         @enderror
                     </div>
 
-                    <!-- Ano e Avaliação -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="ano" class="block text-sm font-medium text-gray-700 mb-2">
@@ -84,7 +80,6 @@
                         </div>
                     </div>
 
-                    <!-- Status Assistido -->
                     <div class="mb-4">
                         <label class="flex items-center gap-2">
                             <input type="checkbox"
@@ -97,7 +92,6 @@
                         </label>
                     </div>
 
-                    <!-- Observações -->
                     <div class="mb-6">
                         <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-2">
                             Observações

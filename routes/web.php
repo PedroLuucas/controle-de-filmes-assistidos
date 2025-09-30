@@ -8,7 +8,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// Redirecionar dashboard para films
 Route::get('/dashboard', function () {
     return redirect()->route('films.index');
 })->middleware(['auth', 'verified'])->name('dashboard');

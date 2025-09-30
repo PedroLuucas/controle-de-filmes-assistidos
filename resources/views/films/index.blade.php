@@ -50,7 +50,6 @@
             </div>
 
 
-            <!-- Lista de Filmes -->
             <div class="bg-white shadow-md rounded-xl p-6 mt-6">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
@@ -62,7 +61,6 @@
                         @endif
                     </h3>
 
-                    <!-- Botão Adicionar dentro do card -->
                     <a href="{{ route('films.create') }}"
                         class="bg-green-600 text-gray-800 px-4 py-2 rounded-lg hover:bg-green-700 transition shadow-sm inline-flex items-center gap-2 text-sm">
                         ➕ Adicionar Filme
@@ -73,7 +71,7 @@
                 <div class="space-y-4">
                     @foreach($films as $film)
                     <div class="border border-gray-200 rounded-lg p-5 hover:shadow-md transition flex flex-col lg:flex-row justify-between gap-4 mb-4 p-4">
-                        <!-- Info -->
+
                         <div class="flex-1">
                             <div class="flex items-start justify-between mb-2">
                                 <h4 class="text-xl font-semibold text-gray-900">{{ $film->titulo }}</h4>
@@ -97,7 +95,6 @@
                             </div>
                         </div>
 
-                        <!-- Ações -->
                         <div class="flex flex-wrap gap-2">
                             <a href="{{ route('films.show', $film) }}"
                                 class="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg text-sm hover:bg-blue-200 transition">👁️ Ver</a>
@@ -121,12 +118,10 @@
                     @endforeach
                 </div>
 
-                <!-- Paginação -->
                 <div class="mt-6">
                     {{ $films->appends(request()->query())->links() }}
                 </div>
                 @else
-                <!-- Estado vazio -->
                 <div class="text-center py-16">
                     <div class="text-7xl mb-4">🎬</div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">

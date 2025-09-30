@@ -33,13 +33,11 @@
                 </div>
             </div>
 
-            <!-- Formulário de edição -->
             <div class="bg-white rounded-xl shadow-md p-6">
                 <form method="POST" action="{{ route('films.update', $film) }}">
                     @csrf
                     @method('PUT')
 
-                    <!-- Título -->
                     <div class="mb-4">
                         <label for="titulo" class="block text-sm font-medium text-gray-700 mb-2">
                             Título do Filme *
@@ -55,7 +53,6 @@
                         @enderror
                     </div>
 
-                    <!-- Diretor -->
                     <div class="mb-4">
                         <label for="diretor" class="block text-sm font-medium text-gray-700 mb-2">
                             Diretor *
@@ -71,9 +68,7 @@
                         @enderror
                     </div>
 
-                    <!-- Ano e Avaliação -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <!-- Ano -->
                         <div>
                             <label for="ano" class="block text-sm font-medium text-gray-700 mb-2">
                                 Ano de Lançamento *
@@ -90,7 +85,6 @@
                             @enderror
                         </div>
 
-                        <!-- Avaliação -->
                         <div>
                             <label for="avaliacao" class="block text-sm font-medium text-gray-700 mb-2">
                                 Avaliação (0 a 10)
@@ -112,7 +106,6 @@
                         </div>
                     </div>
 
-                    <!-- Status Assistido -->
                     <div class="mb-4">
                         <label class="flex items-center gap-2">
                             <input type="checkbox"
@@ -125,7 +118,6 @@
                         </label>
                     </div>
 
-                    <!-- Observações -->
                     <div class="mb-6">
                         <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-2">
                             Observações
@@ -140,7 +132,6 @@
                         @enderror
                     </div>
 
-                    <!-- Botões -->
                     <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
                         <div class="flex flex-wrap gap-3">
                             <a href="{{ route('films.show', $film) }}"

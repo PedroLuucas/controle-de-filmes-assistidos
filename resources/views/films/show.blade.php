@@ -6,14 +6,10 @@
     </x-slot>
 
     <div class="py-12">
-        <!-- Container principal alinhado ao header -->
-        <!-- Container principal -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
-            <!-- Grid de informações -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                <!-- Card de informações -->
                 <div class="bg-white border border-yellow-200 rounded-xl p-6 shadow-sm space-y-3">
                     <h2 class="text-lg font-semibold text-yellow-800 mb-4">📋 Informações</h2>
 
@@ -51,7 +47,6 @@
                     </div>
                 </div>
 
-                <!-- Card de observações -->
                 <div class="bg-white border border-blue-200 rounded-xl p-6 shadow-sm space-y-4">
                     <h2 class="text-lg font-semibold text-blue-800 mb-2">💭 Observações</h2>
                     @if($film->observacoes)
@@ -65,7 +60,6 @@
                     @endif
                 </div>
 
-                <!-- Botão voltar -->
                 <div class="mt-6">
                     <a href="{{ route('films.index') }}"
                         class="bg-blue-500 text-gray-800 px-6 py-2 rounded-lg hover:bg-blue-600 transition shadow-md inline-flex items-center">
