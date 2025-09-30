@@ -123,7 +123,6 @@
                 </div>
                 @else
                 <div class="text-center py-16">
-                    <div class="text-7xl mb-4">🎬</div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">
                         Nenhum filme encontrado
                     </h3>
@@ -134,10 +133,6 @@
                         Adicione seu primeiro filme à coleção!
                         @endif
                     </p>
-                    <a href="{{ route('films.create') }}"
-                        class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md inline-flex items-center gap-2">
-                        ➕ Adicionar Filme
-                    </a>
                 </div>
                 @endif
             </div>
