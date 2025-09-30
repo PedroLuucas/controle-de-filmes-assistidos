@@ -43,5 +43,12 @@
                 🚪 Entrar
             </x-primary-button>
         </div>
+
+        <div class="mt-4 text-center">
+            <span class="text-sm text-gray-600">Não tem uma conta?</span>
+            <a href="{{ route('register') }}" class="underline text-sm text-indigo-600 hover:text-indigo-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ms-1">
+                ✨ Cadastre-se aqui
+            </a>
+        </div>
     </form>
 </x-guest-layout>
