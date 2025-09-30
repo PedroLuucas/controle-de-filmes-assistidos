@@ -17,7 +17,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    // Rotas para filmes (página principal após login)
     Route::resource('films', FilmController::class);
     Route::patch('/films/{film}/toggle-watched', [FilmController::class, 'toggleWatched'])->name('films.toggle-watched');
 });
